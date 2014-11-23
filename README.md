@@ -3,6 +3,7 @@
 面板
 
 * 可折叠
+* 有默认和 `[primary]` 2 种内置样式
 * 可以通过 `[collapsed]` 特性、`collapsed` 属性、`toggle()`, `close()`, `open()` 方法控制折叠状态
 
 ## 特性&属性
@@ -25,7 +26,7 @@
   CONTENT
 </jie-panel>
 
-<jie-panel collapsed>
+<jie-panel primary collapsed>
   <header>HEADER</header>
   CONTENT
 </jie-panel>
