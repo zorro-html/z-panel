@@ -5,9 +5,15 @@
 
   * 可折叠
   * 有默认和 `[primary]` 2 种内置样式
-  * 可以通过 `[collapsed]` 特性、`collapsed` 属性、`toggle()`, `close()`, `open()` 方法控制折叠状态
+  * 可以通过 `static` 特性/属性禁用折叠效果 (永远展开)
+  * 可以通过 `collapsed` 特性/属性确定折叠状态
+  * 可以通过 `toggle()`, `close()`, `open()` 方法控制折叠动作
 
   ## 特性&属性
+
+  ### `static`
+
+  禁用折叠效果 (永远展开)
 
   ### `collapsed`
 
@@ -32,7 +38,7 @@
     CONTENT
   </jie-panel>
 
-  <jie-panel>
+  <jie-panel static>
     CONTENT
   </jie-panel>
 
@@ -102,6 +108,12 @@
       collapsed: false,
 
       /**
+       * 标识是否禁用遮掉效果
+       * @type {Boolean}
+       */
+      static: false,
+
+      /**
        * 标识发生改变时，保证界面的同步变化
        */
       collapsedChanged: function () {
@@ -112,14 +124,18 @@
        * 展开
        */
       open: function () {
-        this.collapsed = false;
+        if (!this.static) {
+          this.collapsed = false;
+        }
       },
 
       /**
        * 折叠
        */
       close: function () {
-        this.collapsed = true;
+        if (!this.static) {
+          this.collapsed = true;
+        }
       },
 
       /**

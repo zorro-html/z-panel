@@ -4,9 +4,15 @@
 
 * 可折叠
 * 有默认和 `[primary]` 2 种内置样式
-* 可以通过 `[collapsed]` 特性、`collapsed` 属性、`toggle()`, `close()`, `open()` 方法控制折叠状态
+* 可以通过 `static` 特性/属性禁用折叠效果 (永远展开)
+* 可以通过 `collapsed` 特性/属性确定折叠状态
+* 可以通过 `toggle()`, `close()`, `open()` 方法控制折叠动作
 
 ## 特性&属性
+
+### `static`
+
+禁用折叠效果 (永远展开)
 
 ### `collapsed`
 
@@ -31,7 +37,7 @@
   CONTENT
 </jie-panel>
 
-<jie-panel>
+<jie-panel static>
   CONTENT
 </jie-panel>
 
