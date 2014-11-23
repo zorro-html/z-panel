@@ -1,0 +1,125 @@
+<!--
+  # panel
+
+  面板
+
+  * 可折叠
+  * 可以通过 `[collapsed]` 特性、`collapsed` 属性、`toggle()`, `close()`, `open()` 方法控制折叠状态
+
+  ## 特性&属性
+
+  ### `collapsed`
+
+  标识内容是否已折叠起来
+
+  ### `toggle()`, `close()`, `open()`
+
+  切换/折叠/展开
+
+  ## Example
+
+  ```
+  <p><jie-btn>toggle!</jie-btn></p>
+
+  <jie-panel>
+    <header>HEADER</header>
+    CONTENT
+  </jie-panel>
+
+  <jie-panel collapsed>
+    <header>HEADER</header>
+    CONTENT
+  </jie-panel>
+
+  <jie-panel>
+    CONTENT
+  </jie-panel>
+
+  <script>
+    var btn = document.querySelector('jie-btn');
+    var panel = document.querySelector('jie-panel');
+
+    btn.addEventListener('click', function (e) {
+      panel.toggle();
+    });
+  </script>
+  ```
+-->
+
+<link rel="import" href="../polymer/polymer.html">
+<link rel="import" href="../core-collapse/core-collapse.html">
+
+<polymer-element name="jie-panel" attributes="collapsed">
+
+  <template>
+    <style>
+      :host {
+        display: block;
+        background-color: #ffffff;
+        border: 1px solid #dddddd;
+        border-radius: 2px;
+        box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);
+      }
+      ::content#header > header {
+        padding: 10px 15px;
+        color: #333333;
+        border-bottom: 1px solid #dddddd;
+        background-color: #eeeeee;
+        border-top-right-radius: 1px;
+        border-top-left-radius: 1px;
+      }
+      #body {
+        box-sizing: border-box;
+        padding: 15px;
+      }
+    </style>
+
+    <content id="header" select="header" on-click="{{toggle}}"></content>
+
+    <core-collapse id="collapse" opened>
+      <div id="body">
+        <content></content>
+      </div>
+    </core-collapse>
+  </template>
+
+  <script>
+    Polymer('jie-panel', {
+
+      /**
+       * 标识内容是否已折叠起来
+       * @type {Boolean}
+       */
+      collapsed: false,
+
+      /**
+       * 标识发生改变时，保证界面的同步变化
+       */
+      collapsedChanged: function () {
+        this.$.collapse.opened = !this.collapsed;
+      },
+
+      /**
+       * 展开
+       */
+      open: function () {
+        this.collapsed = false;
+      },
+
+      /**
+       * 折叠
+       */
+      close: function () {
+        this.collapsed = true;
+      },
+
+      /**
+       * 切换
+       */
+      toggle: function () {
+        this.collapsed = !this.collapsed;
+      }
+    });
+  </script>
+
+</polymer-element>
