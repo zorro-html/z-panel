@@ -1,62 +1,67 @@
 <!--
-  # panel
 
-  面板
+@element z-panel
 
-  * 可折叠
-  * 有默认和 `[primary]` 2 种内置样式
-  * 可以通过 `static` 特性/属性禁用折叠效果 (永远展开)
-  * 可以通过 `collapsed` 特性/属性确定折叠状态
-  * 可以通过 `toggle()`, `close()`, `open()` 方法控制折叠动作
+# `<z-panel>`
 
-  ## 特性&属性
+Panel element which could have (not required) a `<header>` child to toggle content display
 
-  ### `static`
+## Attributes
 
-  禁用折叠效果 (永远展开)
+- `primary`: primary panel style
+- `static`: could not be collapsed
+- `collapsed`: collapsed by default
 
-  ### `collapsed`
+## Methods
 
-  标识内容是否已折叠起来
+- `toggle()`
+- `close()`
+- `open()`
 
-  ### `toggle()`, `close()`, `open()`
+-->
 
-  切换/折叠/展开
+<!--
 
-  ## Example
+@example default
 
-  ```
-  <p><jie-btn>toggle!</jie-btn></p>
+<style>z-panel {max-width: 640px; margin-bottom: 2em;}</style>
 
-  <jie-panel>
-    <header>HEADER</header>
-    CONTENT
-  </jie-panel>
+<p><z-btn id="z-panel-toggle">toggle!</z-btn></p>
 
-  <jie-panel primary collapsed>
-    <header>HEADER</header>
-    CONTENT
-  </jie-panel>
+<z-panel id="z-panel-test">
+  <header>HEADER</header>
+  CONTENT
+</z-panel>
 
-  <jie-panel static>
-    CONTENT
-  </jie-panel>
+<z-panel primary collapsed>
+  <header>HEADER COLLAPSED BY DEFAULT</header>
+  CONTENT
+</z-panel>
 
-  <script>
-    var btn = document.querySelector('jie-btn');
-    var panel = document.querySelector('jie-panel');
+<z-panel static>
+  <header>STATIC HEADER</header>
+  CONTENT
+</z-panel>
 
-    btn.addEventListener('click', function (e) {
-      panel.toggle();
-    });
-  </script>
-  ```
+<z-panel>
+  PANEL CONTENT WITHOUT HEADER
+</z-panel>
+
+<script>
+  var btn = document.querySelector('html /deep/ #z-panel-toggle');
+  var panel = document.querySelector('html /deep/ #z-panel-test');
+
+  btn.addEventListener('click', function (e) {
+    panel.toggle();
+  });
+</script>
+
 -->
 
 <link rel="import" href="../polymer/polymer.html">
 <link rel="import" href="../core-collapse/core-collapse.html">
 
-<polymer-element name="jie-panel" attributes="collapsed">
+<polymer-element name="z-panel" attributes="collapsed">
 
   <template>
     <style>
@@ -67,6 +72,7 @@
         border-radius: 2px;
         box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);
       }
+      polyfill-next-selector { content: ':host > header'; }
       ::content#header > header {
         padding: 10px 15px;
         color: #333333;
@@ -82,6 +88,7 @@
       :host([primary]) {
         border-color: #ff6600;
       }
+      polyfill-next-selector { content: ':host([primary]) > header'; }
       :host([primary]) ::content#header > header {
         color: #ffffff;
         background-color: #ff6600;
@@ -99,7 +106,7 @@
   </template>
 
   <script>
-    Polymer('jie-panel', {
+    Polymer('z-panel', {
 
       /**
        * 标识内容是否已折叠起来

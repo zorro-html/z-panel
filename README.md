@@ -1,49 +1,48 @@
-# panel
+# `<z-panel>`
 
-面板
+Panel element which has header to toggle content display
 
-* 可折叠
-* 有默认和 `[primary]` 2 种内置样式
-* 可以通过 `static` 特性/属性禁用折叠效果 (永远展开)
-* 可以通过 `collapsed` 特性/属性确定折叠状态
-* 可以通过 `toggle()`, `close()`, `open()` 方法控制折叠动作
+## Attributes
 
-## 特性&属性
+- `primary`: primary panel style
+- `static`: could not be collapsed
+- `collapsed`: collapsed by default
 
-### `static`
+## Methods
 
-禁用折叠效果 (永远展开)
-
-### `collapsed`
-
-标识内容是否已折叠起来
-
-### `toggle()`, `close()`, `open()`
-
-切换/折叠/展开
+- `toggle()`
+- `close()`
+- `open()`
 
 ## Example
 
 ```
-<p><jie-btn>toggle!</jie-btn></p>
+<style>z-panel {max-width: 640px; margin-bottom: 2em;}</style>
 
-<jie-panel>
+<p><z-btn id="z-panel-toggle">toggle!</z-btn></p>
+
+<z-panel id="z-panel-test">
   <header>HEADER</header>
   CONTENT
-</jie-panel>
+</z-panel>
 
-<jie-panel primary collapsed>
-  <header>HEADER</header>
+<z-panel primary collapsed>
+  <header>HEADER COLLAPSED BY DEFAULT</header>
   CONTENT
-</jie-panel>
+</z-panel>
 
-<jie-panel static>
+<z-panel static>
+  <header>STATIC HEADER</header>
   CONTENT
-</jie-panel>
+</z-panel>
+
+<z-panel>
+  PANEL CONTENT WITHOUT HEADER
+</z-panel>
 
 <script>
-  var btn = document.querySelector('jie-btn');
-  var panel = document.querySelector('jie-panel');
+  var btn = document.querySelector('html /deep/ #z-panel-toggle');
+  var panel = document.querySelector('html /deep/ #z-panel-test');
 
   btn.addEventListener('click', function (e) {
     panel.toggle();

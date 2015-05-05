@@ -5,43 +5,18 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, user-scalable=no">
 
-<title>Jie Panel</title>
+<title>Zorro Panel Element</title>
 
 <script src="../webcomponentsjs/webcomponents.js"></script>
-<link rel="import" href="jie-panel.html">
-<link rel="import" href="../jie-btn/jie-btn.html">
+<link rel="import" href="../docs-maker/z-doc.html">
 
-<style>
-  jie-panel {margin-bottom: 1em;}
-</style>
+<link rel="import" href="../z-btn/z-btn.html">
+<link rel="import" href="z-panel.html">
 
 </head>
 <body>
 
-<p><jie-btn>toggle!</jie-btn></p>
-
-<jie-panel>
-  <header>HEADER</header>
-  CONTENT
-</jie-panel>
-
-<jie-panel collapsed primary>
-  <header>HEADER</header>
-  CONTENT
-</jie-panel>
-
-<jie-panel>
-  CONTENT
-</jie-panel>
-
-<script>
-  var btn = document.querySelector('jie-btn');
-  var panel = document.querySelector('jie-panel');
-
-  btn.addEventListener('click', function (e) {
-    panel.toggle();
-  });
-</script>
+<z-doc name="z-panel"></z-doc>
 
 </body>
 </html>
