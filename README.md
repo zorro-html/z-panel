@@ -1,6 +1,6 @@
 # `<z-panel>`
 
-Panel element which has header to toggle content display
+Panel element which could have (not required) a `<header>` child to toggle content display
 
 ## Attributes
 
@@ -14,7 +14,7 @@ Panel element which has header to toggle content display
 - `close()`
 - `open()`
 
-## Example
+## Examples
 
 ```
 <style>z-panel {max-width: 640px; margin-bottom: 2em;}</style>
